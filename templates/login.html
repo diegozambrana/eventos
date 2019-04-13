@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <h4>login:</h4>
+            <form action="/login/" method="post" class="form-group" name="login_form">
+                {% csrf_token %}
+                <label for="">nombre usuario</label>
+                <input type="text" class="form-control" name="username">
+                <label for="">contrase&ntilde;a</label>
+                <input type="password" class="form-control" name="password">
+                <br>
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+
+{% endblock %}

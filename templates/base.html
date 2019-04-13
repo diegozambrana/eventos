@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Taller de Base de Datos {% block title %}{% endblock %}</title>
+	
+    <link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+	{% block style %}{% endblock %}
+</head>
+<body ng-app="main">
+    <div class="content" ng-controller="myCtrl">
+	    {% block body %}{% endblock %}
+    </div>
+    <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+    <script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "bower_components/angular/angular.min.js" %}"></script>
+    <script src="{% static "bower_components/angular-route/angular-route.min.js" %}"></script>
+	<script src="{% static "app/controllers/controller.js" %}"></script>
+    <script src="{% static "app/services/service.js" %}"></script>
+    <script src="{% static "app/app.js" %}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModalClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" 
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Registrar client</h4>
+            </div>
+            <div class="modal-body">
+                <form ng-model="client" class="form-group">
+                    <input type="text" placeholder="nombre: " ng-model="client.name" class="form-control">
+                    <input type="text" placeholder="ci: " ng-model="client.ci" class="form-control">
+                    <input type="text" placeholder="nit: " ng-model="client.nit" class="form-control">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="create_client(client)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModalFiesta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" 
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Registrar Contrato para fiesta</h4>
+            </div>
+            <div class="modal-body">
+                <form ng-model="val" class="form-group">
+                    <select id="" name="" ng-model="val.id_persona" class="form-control">
+                        <option value="" disabled selected>Seleccionar Cliente</option>
+                        {% for p in personas %}
+                        <option value="{{p.0}}">{{p.1}} - CI: {{p.2}}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="" name="" ng-model="val.lugar" class="form-control">
+                        <option value="" disabled selected>Seleccionar Lugar</option>
+                        {% for l in lugares %}
+                        <option value="{{l.0}}">{{l.1}} - dir: {{l.2}}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="" name="" ng-model="val.tipo_evento" class="form-control">
+                        <option value="" disabled selected>Seleccionar Tipo de Evento</option>
+                        {% for te in tipoEvento %}
+                        <option value="{{te.0}}">{{te.1}}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="" name="" ng-model="val.tipo_fiesta" class="form-control">
+                        <option value="" disabled selected>Seleccionar Tipo de Fiesta</option>
+                        {% for tf in tipoFiesta %}
+                        <option value="{{tf.0}}">{{tf.1}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="date" ng-model="val.inicio" class="form-control">
+                    <input type="date" ng-model="val.fin" class="form-control">
+                    <input type="number" placeholder="Costo Total: " ng-model="val.costo_total" class="form-control">
+                    <input type="number" placeholder="A Cuenta: " ng-model="val.a_cuenta" class="form-control" value="0">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="add_fiesta(val)">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>{{ usuario.2 }} {{ usuario.3 }}</h4>
+            <p>email: {{ usuario.4 }}</p>
+            <a href="/logout/">salir</a>
+        </div>
+        <div class="col-sm-8">
+            <p>ola k ase</p>
+            <p> {{lugares}} </p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalClient"> 
+                Registrar cliente
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalFiesta">
+                Registrar Fiesta
+            </button>
+            <!-- Button trigger modal -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
